@@ -14,13 +14,13 @@ from egd_funcs.funcs import get_lessons, get_homework
 from mesh.get_answers import get_answers
 
 
-@dp.message_handler(Command("start"))
+@dp.message_handler(Command("start"), state='*')
 @rate_limit(1, 'start')
 async def start(message: Message, state: FSMContext):
     await bot.send_message(message.chat.id, '<b>Главное меню</b>', reply_markup=main_keyboard())
     await state.set_state(States.main_menu)
 
-@dp.message_handler(Command("lessons"))
+@dp.message_handler(Command("lessons"),  state='*')
 @rate_limit(2, 'lessons')
 async def lessons(message: Message, state: FSMContext):
     await bot.send_message(message.chat.id, '<b>Выберите дату:</b>', reply_markup=date_keyboard_generation(type='schedule'))
