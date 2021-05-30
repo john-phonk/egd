@@ -8,6 +8,7 @@ from aiogram.dispatcher.middlewares import BaseMiddleware
 from aiogram.utils.exceptions import Throttled
 from aiogram.types import CallbackQuery
 
+
 def rate_limit(limit: int, key=None):
     def decorator(func):
         setattr(func, 'throttling_rate_limit', limit)
